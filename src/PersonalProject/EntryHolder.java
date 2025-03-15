@@ -20,7 +20,7 @@ public class EntryHolder {
         }
         entries.add(entry); //Adds the individual entry to the entry list
         System.out.println("Entry added successfully!"); //Prints if entry was added correctly
-        return true;
+        return true; //Return true
     }
     /**Method to check if the entry already exist
      * @return true if a duplicate is found or false if no duplicate is found */
