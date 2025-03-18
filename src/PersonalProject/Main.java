@@ -49,27 +49,27 @@ public class Main {
 
     /**Method for holding menu print*/
     private static void menu() {
-        System.out.println("Welcome to your personal project!");
-        System.out.println("1. Add Entry");
-        System.out.println("2. Edit Entry");
-        System.out.println("3. View Table");
-        System.out.println("4. Exit");
-        System.out.println("Enter your choice: ");
+        System.out.println("Welcome to your personal project!"); //Prints in console
+        System.out.println("1. Add Entry"); //Prints in console
+        System.out.println("2. Edit Entry"); //Prints in console
+        System.out.println("3. View Table"); //Prints in console
+        System.out.println("4. Exit"); //Prints in console
+        System.out.println("Enter your choice: "); //Prints in console
     }
     private static void addEntry(Scanner sc, EntryHolder entryHolder) {
-        System.out.println("Enter the romanji for the entry you would like to add: ");
-        String roman = sc.nextLine();
-        System.out.println("Enter the kana for the entry: ");
-        String kana = sc.nextLine();
-        System.out.println("Enter the kanji for the entry: ");
-        String kanji = sc.nextLine();
-        System.out.println("Enter the english meaning for the entry: ");
-        String englishMeaning = sc.nextLine();
-        System.out.println("Enter any notes for the entry: ");
-        String notes = sc.nextLine();
-        VocabEntry entry = new VocabEntry(roman, kana, kanji, englishMeaning, notes);
-        entryHolder.addEntry(entry);
-        ProgramStorage.entrySaving(entryHolder.getEntries());
+        System.out.println("Enter the romanji for the entry you would like to add: "); //Prints in console
+        String roman = sc.nextLine(); //String to hold roman
+        System.out.println("Enter the kana for the entry: "); //Prints in console
+        String kana = sc.nextLine(); //String for Kana
+        System.out.println("Enter the kanji for the entry: ");//Prints in console
+        String kanji = sc.nextLine(); //String for kanji
+        System.out.println("Enter the english meaning for the entry: "); //Prints in console
+        String englishMeaning = sc.nextLine(); //String for english
+        System.out.println("Enter any notes for the entry: "); //Prints in console
+        String notes = sc.nextLine(); //String for note
+        VocabEntry entry = new VocabEntry(roman, kana, kanji, englishMeaning, notes); //Adds the entry by passing the variable to constructor
+        entryHolder.addEntry(entry); //Adds the entry to stored entries
+        ProgramStorage.entrySaving(entryHolder.getEntries()); //Saves the entries to json file
     }
     private static void editEntry(Scanner sc, EntryHolder entryHolder) {
         boolean editing = true;
