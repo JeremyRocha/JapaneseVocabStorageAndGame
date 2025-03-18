@@ -96,42 +96,42 @@ public class Main {
                     entryHolder.updateEntry(selectedEntry, updater, selectedEntry.getKana(), selectedEntry.getKanji(), selectedEntry.getEnglish(), selectedEntry.getNotes()); //Pass update string to method
                 }
                 System.out.println("Enter the new value for kana or leave blank to keep it: "); //Prints out message
-                updater = sc.nextLine();
+                updater = sc.nextLine(); //String to hold update
                 if (updater.isEmpty()) {
-                    System.out.println("You kept: " + selectedEntry.getKana());
+                    System.out.println("You kept: " + selectedEntry.getKana()); //Prints out original entry
                 }
                 else{
-                    entryHolder.updateEntry(selectedEntry, selectedEntry.getRomanji(), updater, selectedEntry.getKanji(), selectedEntry.getEnglish(), selectedEntry.getNotes());
+                    entryHolder.updateEntry(selectedEntry, selectedEntry.getRomanji(), updater, selectedEntry.getKanji(), selectedEntry.getEnglish(), selectedEntry.getNotes());//Pass update string to method
                 }
-                updater = sc.nextLine();
+                updater = sc.nextLine(); //String to hold update
                 if (updater.isEmpty()) {
-                    System.out.println("You kept: " + selectedEntry.getKanji());
+                    System.out.println("You kept: " + selectedEntry.getKanji()); //Prints out original entry
                 }
                 else{
-                    entryHolder.updateEntry(selectedEntry, selectedEntry.getRomanji(), selectedEntry.getKana(), updater, selectedEntry.getEnglish(), selectedEntry.getNotes());
+                    entryHolder.updateEntry(selectedEntry, selectedEntry.getRomanji(), selectedEntry.getKana(), updater, selectedEntry.getEnglish(), selectedEntry.getNotes()); //Pass update string to method
                 }
-                updater = sc.nextLine();
+                updater = sc.nextLine(); //String to hold update
                 if (updater.isEmpty()) {
-                    System.out.println("You kept: " + selectedEntry.getEnglish());
+                    System.out.println("You kept: " + selectedEntry.getEnglish()); //Prints out original entry
                 }
                 else{
-                    entryHolder.updateEntry(selectedEntry, selectedEntry.getRomanji(), selectedEntry.getKana(), selectedEntry.getKanji(), updater, selectedEntry.getNotes());
+                    entryHolder.updateEntry(selectedEntry, selectedEntry.getRomanji(), selectedEntry.getKana(), selectedEntry.getKanji(), updater, selectedEntry.getNotes()); //Pass update string to method
                 }
-                updater = sc.nextLine();
+                updater = sc.nextLine(); //String to hold update
                 if (updater.isEmpty()) {
-                    System.out.println("You kept: " + selectedEntry.getNotes());
+                    System.out.println("You kept: " + selectedEntry.getNotes()); //Prints out original entry
                 }
                 else{
-                    entryHolder.updateEntry(selectedEntry, selectedEntry.getRomanji(), selectedEntry.getKana(), selectedEntry.getKanji(), selectedEntry.getEnglish(), updater);
+                    entryHolder.updateEntry(selectedEntry, selectedEntry.getRomanji(), selectedEntry.getKana(), selectedEntry.getKanji(), selectedEntry.getEnglish(), updater); //Pass update string to method
                 }
                 System.out.println("Your update Entry has been successfully updated!");
                 System.out.println(selectedEntry);
                 System.out.println("Press enter to continue...");
 
-                updater = sc.nextLine();
+                updater = sc.nextLine(); //Get user input to continue. Used update so I didn't have to make a new variable
                 if(updater.isEmpty()) {
-                    editing = false;
-                    ProgramStorage.entrySaving(entryHolder.getEntries());
+                    editing = false; //Set editing to false to exit loop
+                    ProgramStorage.entrySaving(entryHolder.getEntries()); //Save updated entry to json
                 }
             } else {
                 System.out.println("Entry not found!");
