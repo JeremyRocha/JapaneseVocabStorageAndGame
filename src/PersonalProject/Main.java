@@ -72,30 +72,30 @@ public class Main {
         ProgramStorage.entrySaving(entryHolder.getEntries()); //Saves the entries to json file
     }
     private static void editEntry(Scanner sc, EntryHolder entryHolder) {
-        boolean editing = true;
+        boolean editing = true; //Boolean  to control follow
         while(editing) {
-            System.out.println("Enter search term(romanji, kana, kanji, english for the entry): ");
-            String search = sc.nextLine();
+            System.out.println("Enter search term(romanji, kana, kanji, english for the entry): "); //Prints in console
+            String search = sc.nextLine(); //String to hold search
 
-            entryHolder.displayEntries(search);
-            System.out.println("Enter the number of the entry you would like to edit: ");
+            entryHolder.displayEntries(search); //Pass the search to the display entry method
+            System.out.println("Enter the number of the entry you would like to edit: "); //Prints in console
 
-            int selection = sc.nextInt() - 1;
-            sc.nextLine();
-            VocabEntry selectedEntry = entryHolder.selectEntry(selection);
+            int selection = sc.nextInt() - 1; //Store int for selection
+            sc.nextLine(); //clears for next line
+            VocabEntry selectedEntry = entryHolder.selectEntry(selection); //Pulls selected entry from method
 
             if (selectedEntry != null) {
                 System.out.println("Editing Entry: " + selectedEntry.getRomanji() + "|"
                         + selectedEntry.getKana() + "|" + selectedEntry.getKanji() + "|"
-                        + selectedEntry.getEnglish() + "|" + selectedEntry.getNotes());
-                System.out.println("Enter the new value for romanji or leave blank to keep it: ");
-                String updater = sc.nextLine();
+                        + selectedEntry.getEnglish() + "|" + selectedEntry.getNotes()); //Prints out the entry
+                System.out.println("Enter the new value for romanji or leave blank to keep it: "); //Prints out message
+                String updater = sc.nextLine(); //String to hold updated part
                 if (updater.isEmpty()) {
-                    System.out.println("You kept: " + selectedEntry.getRomanji());
+                    System.out.println("You kept: " + selectedEntry.getRomanji()); //Prints out original entry
                 } else {
-                    entryHolder.updateEntry(selectedEntry, updater, selectedEntry.getKana(), selectedEntry.getKanji(), selectedEntry.getEnglish(), selectedEntry.getNotes());
+                    entryHolder.updateEntry(selectedEntry, updater, selectedEntry.getKana(), selectedEntry.getKanji(), selectedEntry.getEnglish(), selectedEntry.getNotes()); //Pass update string to method
                 }
-                System.out.println("Enter the new value for kana or leave blank to keep it: ");
+                System.out.println("Enter the new value for kana or leave blank to keep it: "); //Prints out message
                 updater = sc.nextLine();
                 if (updater.isEmpty()) {
                     System.out.println("You kept: " + selectedEntry.getKana());
