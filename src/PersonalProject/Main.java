@@ -49,89 +49,89 @@ public class Main {
 
     /**Method for holding menu print*/
     private static void menu() {
-        System.out.println("Welcome to your personal project!");
-        System.out.println("1. Add Entry");
-        System.out.println("2. Edit Entry");
-        System.out.println("3. View Table");
-        System.out.println("4. Exit");
-        System.out.println("Enter your choice: ");
+        System.out.println("Welcome to your personal project!"); //Prints in console
+        System.out.println("1. Add Entry"); //Prints in console
+        System.out.println("2. Edit Entry"); //Prints in console
+        System.out.println("3. View Table"); //Prints in console
+        System.out.println("4. Exit"); //Prints in console
+        System.out.println("Enter your choice: "); //Prints in console
     }
     private static void addEntry(Scanner sc, EntryHolder entryHolder) {
-        System.out.println("Enter the romanji for the entry you would like to add: ");
-        String roman = sc.nextLine();
-        System.out.println("Enter the kana for the entry: ");
-        String kana = sc.nextLine();
-        System.out.println("Enter the kanji for the entry: ");
-        String kanji = sc.nextLine();
-        System.out.println("Enter the english meaning for the entry: ");
-        String englishMeaning = sc.nextLine();
-        System.out.println("Enter any notes for the entry: ");
-        String notes = sc.nextLine();
-        VocabEntry entry = new VocabEntry(roman, kana, kanji, englishMeaning, notes);
-        entryHolder.addEntry(entry);
-        ProgramStorage.entrySaving(entryHolder.getEntries());
+        System.out.println("Enter the romanji for the entry you would like to add: "); //Prints in console
+        String roman = sc.nextLine(); //String to hold roman
+        System.out.println("Enter the kana for the entry: "); //Prints in console
+        String kana = sc.nextLine(); //String for Kana
+        System.out.println("Enter the kanji for the entry: ");//Prints in console
+        String kanji = sc.nextLine(); //String for kanji
+        System.out.println("Enter the english meaning for the entry: "); //Prints in console
+        String englishMeaning = sc.nextLine(); //String for english
+        System.out.println("Enter any notes for the entry: "); //Prints in console
+        String notes = sc.nextLine(); //String for note
+        VocabEntry entry = new VocabEntry(roman, kana, kanji, englishMeaning, notes); //Adds the entry by passing the variable to constructor
+        entryHolder.addEntry(entry); //Adds the entry to stored entries
+        ProgramStorage.entrySaving(entryHolder.getEntries()); //Saves the entries to json file
     }
     private static void editEntry(Scanner sc, EntryHolder entryHolder) {
-        boolean editing = true;
+        boolean editing = true; //Boolean  to control follow
         while(editing) {
-            System.out.println("Enter search term(romanji, kana, kanji, english for the entry): ");
-            String search = sc.nextLine();
+            System.out.println("Enter search term(romanji, kana, kanji, english for the entry): "); //Prints in console
+            String search = sc.nextLine(); //String to hold search
 
-            entryHolder.displayEntries(search);
-            System.out.println("Enter the number of the entry you would like to edit: ");
+            entryHolder.displayEntries(search); //Pass the search to the display entry method
+            System.out.println("Enter the number of the entry you would like to edit: "); //Prints in console
 
-            int selection = sc.nextInt() - 1;
-            sc.nextLine();
-            VocabEntry selectedEntry = entryHolder.selectEntry(selection);
+            int selection = sc.nextInt() - 1; //Store int for selection
+            sc.nextLine(); //clears for next line
+            VocabEntry selectedEntry = entryHolder.selectEntry(selection); //Pulls selected entry from method
 
             if (selectedEntry != null) {
                 System.out.println("Editing Entry: " + selectedEntry.getRomanji() + "|"
                         + selectedEntry.getKana() + "|" + selectedEntry.getKanji() + "|"
-                        + selectedEntry.getEnglish() + "|" + selectedEntry.getNotes());
-                System.out.println("Enter the new value for romanji or leave blank to keep it: ");
-                String updater = sc.nextLine();
+                        + selectedEntry.getEnglish() + "|" + selectedEntry.getNotes()); //Prints out the entry
+                System.out.println("Enter the new value for romanji or leave blank to keep it: "); //Prints out message
+                String updater = sc.nextLine(); //String to hold updated part
                 if (updater.isEmpty()) {
-                    System.out.println("You kept: " + selectedEntry.getRomanji());
+                    System.out.println("You kept: " + selectedEntry.getRomanji()); //Prints out original entry
                 } else {
-                    entryHolder.updateEntry(selectedEntry, updater, selectedEntry.getKana(), selectedEntry.getKanji(), selectedEntry.getEnglish(), selectedEntry.getNotes());
+                    entryHolder.updateEntry(selectedEntry, updater, selectedEntry.getKana(), selectedEntry.getKanji(), selectedEntry.getEnglish(), selectedEntry.getNotes()); //Pass update string to method
                 }
-                System.out.println("Enter the new value for kana or leave blank to keep it: ");
-                updater = sc.nextLine();
+                System.out.println("Enter the new value for kana or leave blank to keep it: "); //Prints out message
+                updater = sc.nextLine(); //String to hold update
                 if (updater.isEmpty()) {
-                    System.out.println("You kept: " + selectedEntry.getKana());
+                    System.out.println("You kept: " + selectedEntry.getKana()); //Prints out original entry
                 }
                 else{
-                    entryHolder.updateEntry(selectedEntry, selectedEntry.getRomanji(), updater, selectedEntry.getKanji(), selectedEntry.getEnglish(), selectedEntry.getNotes());
+                    entryHolder.updateEntry(selectedEntry, selectedEntry.getRomanji(), updater, selectedEntry.getKanji(), selectedEntry.getEnglish(), selectedEntry.getNotes());//Pass update string to method
                 }
-                updater = sc.nextLine();
+                updater = sc.nextLine(); //String to hold update
                 if (updater.isEmpty()) {
-                    System.out.println("You kept: " + selectedEntry.getKanji());
+                    System.out.println("You kept: " + selectedEntry.getKanji()); //Prints out original entry
                 }
                 else{
-                    entryHolder.updateEntry(selectedEntry, selectedEntry.getRomanji(), selectedEntry.getKana(), updater, selectedEntry.getEnglish(), selectedEntry.getNotes());
+                    entryHolder.updateEntry(selectedEntry, selectedEntry.getRomanji(), selectedEntry.getKana(), updater, selectedEntry.getEnglish(), selectedEntry.getNotes()); //Pass update string to method
                 }
-                updater = sc.nextLine();
+                updater = sc.nextLine(); //String to hold update
                 if (updater.isEmpty()) {
-                    System.out.println("You kept: " + selectedEntry.getEnglish());
+                    System.out.println("You kept: " + selectedEntry.getEnglish()); //Prints out original entry
                 }
                 else{
-                    entryHolder.updateEntry(selectedEntry, selectedEntry.getRomanji(), selectedEntry.getKana(), selectedEntry.getKanji(), updater, selectedEntry.getNotes());
+                    entryHolder.updateEntry(selectedEntry, selectedEntry.getRomanji(), selectedEntry.getKana(), selectedEntry.getKanji(), updater, selectedEntry.getNotes()); //Pass update string to method
                 }
-                updater = sc.nextLine();
+                updater = sc.nextLine(); //String to hold update
                 if (updater.isEmpty()) {
-                    System.out.println("You kept: " + selectedEntry.getNotes());
+                    System.out.println("You kept: " + selectedEntry.getNotes()); //Prints out original entry
                 }
                 else{
-                    entryHolder.updateEntry(selectedEntry, selectedEntry.getRomanji(), selectedEntry.getKana(), selectedEntry.getKanji(), selectedEntry.getEnglish(), updater);
+                    entryHolder.updateEntry(selectedEntry, selectedEntry.getRomanji(), selectedEntry.getKana(), selectedEntry.getKanji(), selectedEntry.getEnglish(), updater); //Pass update string to method
                 }
                 System.out.println("Your update Entry has been successfully updated!");
                 System.out.println(selectedEntry);
                 System.out.println("Press enter to continue...");
 
-                updater = sc.nextLine();
+                updater = sc.nextLine(); //Get user input to continue. Used update so I didn't have to make a new variable
                 if(updater.isEmpty()) {
-                    editing = false;
-                    ProgramStorage.entrySaving(entryHolder.getEntries());
+                    editing = false; //Set editing to false to exit loop
+                    ProgramStorage.entrySaving(entryHolder.getEntries()); //Save updated entry to json
                 }
             } else {
                 System.out.println("Entry not found!");
