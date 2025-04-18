@@ -42,7 +42,7 @@ public class EntryHolder {
     public void displayEntries(String search) {
         boolean found = false;
 
-        for (VocabEntry entry : entries) {
+        for (VocabEntry entry : entries) { //fg
             if (entry.getKana().toLowerCase().contains(search.toLowerCase())
                     || entry.getKanji().toLowerCase().contains(search.toLowerCase())
                     || entry.getRomanji().toLowerCase().contains(search.toLowerCase())
