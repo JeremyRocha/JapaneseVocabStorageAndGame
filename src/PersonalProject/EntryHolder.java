@@ -62,7 +62,7 @@ public class EntryHolder {
         if(index >= 0 && index < entries.size()) {
             return entries.get(index);
         }
-        return null;
+        return null; //return null
     }
     /**Method for updating an entry
      * Sets the value based on the input received */
